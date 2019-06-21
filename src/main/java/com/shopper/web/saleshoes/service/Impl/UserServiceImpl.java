@@ -5,10 +5,19 @@ import com.shopper.web.saleshoes.dto.UsersDTO;
 import com.shopper.web.saleshoes.repository.UserRepository;
 import com.shopper.web.saleshoes.service.UserService;
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.sql.Template;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.internet.MimeMessage;
+import javax.security.auth.login.Configuration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -16,6 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     private UsersDTO user;
 
@@ -46,5 +58,14 @@ public class UserServiceImpl implements UserService {
         user.setEmail(user.getEmail());
         user.setPassword(user.getPassword());
         userRepository.save(user);
+    }
+
+    @Override
+    public void sendEmail(String email) {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+        msg.setSubject("Testing from Spring Boot");
+        msg.setText("Hello World \n Spring Boot Email");
+        javaMailSender.send(msg);
     }
 }

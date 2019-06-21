@@ -12,4 +12,6 @@ public interface UserService {
     boolean checkLogin();
 
     void save(Users user);
+
+    void sendEmail(String email);
 }

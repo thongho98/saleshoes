@@ -113,9 +113,9 @@ public class HomeController {
         if(registerUser.getPassword().equals(registerUser.getConfirmPassword())){
             BeanUtils.copyProperties(registerUser,user);
             userService.save(user);
+            userService.sendEmail(registerUser.getEmail());
             return "redirect:/sign-in";
         }
-        userService.save(user);
         return "redirect:/sign-up";
     }
 
