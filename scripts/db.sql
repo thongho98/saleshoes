@@ -57,16 +57,15 @@ create table url_image(
 );
 
 create table size_shoes(
-	id_size int not null primary key,
-	quantity int not null,
-	unit varchar(50) not null
+	id_size int not null auto_increment primary key,
+    name varchar(3) not null
 );
 
 create table products(
 	id int not null auto_increment primary key,
 	name varchar(255) not null,
 	price double not null,
-	update_at date,
+	update_at date not null,
 	id_category int not null,
 	id_status int not null,
 	id_img int not null,
@@ -79,6 +78,8 @@ create table size_product(
 	id int not null auto_increment primary key,
 	id_size int not null,
 	id_product int not null,
+	quantity int not null,
+	unit varchar(50) not null,
 	foreign key (id_size) references size_shoes(id_size),
 	foreign key (id_product) references products(id)
 );
@@ -87,13 +88,14 @@ create table description(
 	id int not null auto_increment primary key,
 	id_product int not null,
 	code varchar(50) not null,
-	description_detail varchar(255) not null,
+	description_detail varchar(1000) not null,
 	material varchar(255) not null,
 	brands varchar(255) not null,
 	design varchar(255) not null,
 	madein varchar(255) not null,
 	foreign key (id_product) references products(id)
 );
+
 create table bill_status(
 	id int not null auto_increment primary key,
 	name varchar(50) not null
@@ -128,27 +130,4 @@ create table promotion(
 	dayend date not null,
 	url varchar(1000) not null
 );
-
-#insert
-insert into roles(roleName) values ("SYS_ADMIN")
-insert into roles(roleName) values ("USER")
-insert into roles(roleName) values ("USER_PRE")
-
-insert into permission(permissionName) values ("CREATE")
-insert into permission(permissionName) values ("READ")
-insert into permission(permissionName) values ("UPDATE")
-insert into permission(permissionName) values ("DELETE")
-insert into permission(permissionName) values ("ORDER")
-
-insert into role_permission(role_id,permission_id) values (1,1)
-insert into role_permission(role_id,permission_id) values (1,2)
-insert into role_permission(role_id,permission_id) values (1,3)
-
-insert into categories(name, img) values ("MEN","")
-insert into categories(name, img) values ("WOMMEN","")
-insert into categories(name, img) values ("CHILDREN","")
-
-insert into status_product(name) values ("STOCKING","")
-insert into status_product(name) values ("OUT OF STOCKING","")
-insert into status_product(name) values ("INVENTORY","")
 
