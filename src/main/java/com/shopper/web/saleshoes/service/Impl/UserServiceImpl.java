@@ -68,4 +68,9 @@ public class UserServiceImpl implements UserService {
         msg.setText("Hello World \n Spring Boot Email");
         javaMailSender.send(msg);
     }
+
+    @Override
+    public void update(Users users) {
+        userRepository.save(users);
+    }
 }
