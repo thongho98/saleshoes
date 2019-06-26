@@ -5,19 +5,12 @@ import com.shopper.web.saleshoes.dto.UsersDTO;
 import com.shopper.web.saleshoes.repository.UserRepository;
 import com.shopper.web.saleshoes.service.UserService;
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.sql.Template;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import javax.mail.internet.MimeMessage;
-import javax.security.auth.login.Configuration;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
