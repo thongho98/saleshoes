@@ -1,18 +1,17 @@
 package com.shopper.web.saleshoes.controller;
 
 import com.shopper.web.saleshoes.domain.Users;
+import com.shopper.web.saleshoes.dto.ChangePasswordRequest;
 import com.shopper.web.saleshoes.dto.LoginRequest;
 import com.shopper.web.saleshoes.dto.RegisterRequest;
 import com.shopper.web.saleshoes.dto.UsersDTO;
+import com.shopper.web.saleshoes.repository.UserRepository;
 import com.shopper.web.saleshoes.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
@@ -24,13 +23,11 @@ public class HomeController {
     private HttpSession session;
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
     @RequestMapping({"", "/", "/index"})
     public String index() {
-        UsersDTO userSession = (UsersDTO)session.getAttribute("usersession");
-        if(userSession == null){
-            return "redirect:/sign-in";
-        }
         return "index";
     }
 
@@ -66,6 +63,9 @@ public class HomeController {
 
     @RequestMapping("/sign-in")
     public String signin() {
+        if(userService.checkLogin()) {
+            return "redirect:/index";
+        }
         return "sign-in";
     }
 
@@ -90,19 +90,18 @@ public class HomeController {
     public String loginUser(@ModelAttribute LoginRequest loginRequest, Model model) {
         System.out.println(loginRequest.getUsername());
         System.out.println(loginRequest.getPassword());
-        Optional<UsersDTO> user = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
-        if (!user.isPresent()) {
+        Optional<UsersDTO> userDTO = userService.login(loginRequest.getUsername(), loginRequest.getPassword());
+        if (!userDTO.isPresent()) {
             model.addAttribute("messsage", "Username or Password is wrong!");
             return "redirect:/sign-in";
         }
-        session.setAttribute("usersession",user.get());
+        session.setAttribute("usersession",userDTO.get());
         return "index";
     }
 
     @GetMapping("/sign-up")
     public String register(Model model) {
         model.addAttribute("title", "Register");
-        //model.addAttribute("messsage", null);
         model.addAttribute("registerRequest", new RegisterRequest());
         return "sign-up";
     }
@@ -116,7 +115,6 @@ public class HomeController {
             userService.sendEmail(registerUser.getEmail());
             return "redirect:/sign-in";
         }
-        return "redirect:/sign-up";
+        return "sign-up";
     }
-
 }
