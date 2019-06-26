@@ -1,9 +1,12 @@
 package com.shopper.web.saleshoes.controller;
 
+import com.shopper.web.saleshoes.domain.Products;
 import com.shopper.web.saleshoes.domain.Users;
 import com.shopper.web.saleshoes.dto.LoginRequest;
 import com.shopper.web.saleshoes.dto.RegisterRequest;
 import com.shopper.web.saleshoes.dto.UsersDTO;
+import com.shopper.web.saleshoes.service.Impl.ProductsSearchlmpl;
+import com.shopper.web.saleshoes.service.ProductsService;
 import com.shopper.web.saleshoes.service.UserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -24,6 +28,8 @@ public class HomeController {
     private HttpSession session;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductsSearchlmpl productsSearch;
 
     @RequestMapping({"", "/", "/index"})
     public String index() {
@@ -117,6 +123,19 @@ public class HomeController {
             return "redirect:/sign-in";
         }
         return "redirect:/sign-up";
+    }
+
+    @RequestMapping("/search")
+    public String search(String q, Model model) {
+        List<Products> searchResults = null;
+        try {
+            searchResults = productsSearch.search(q);
+        }
+        catch (Exception ex) {
+
+        }
+        model.addAttribute("searchResults", searchResults);
+        return "search";
     }
 
 }

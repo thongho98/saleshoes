@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Hibernate Search</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+  
+  <ol>
+    <li th:each="products : ${searchResults}">
+      <b><span th:text="${products.name}"></span></b> -
+      <span th:text="${products.price}"></span>
+    </li>
+  </ol>
+  
+  <p th:if="${searchResults.isEmpty()}">
+    <strong>Hint</strong>: the query "<a href='/search?q=amy'>amy</a>"
+  </p>
+  
+  <br />
+  <hr />
+
+</body>
+
+</html>
