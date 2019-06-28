@@ -1,10 +1,10 @@
 package com.shopper.web.saleshoes.domain;
 
-import lombok.Data;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
 
 //@Data
 @Entity
@@ -21,7 +21,7 @@ public class Products implements Serializable{
     private Double price;
 
     @Column(name = "update_at")
-    private Calendar updateAt;
+    private LocalDate updateAt;
 
     @ManyToOne
     @JoinColumn(name="id_category", referencedColumnName = "id")
@@ -30,8 +30,8 @@ public class Products implements Serializable{
     @Column(name = "id_status")
     private int statusId;
 
-    @Column(name = "id_img")
-    private int imgId;
+    @OneToMany(mappedBy="urlImage", fetch=FetchType.LAZY)
+    private List<UrlImage> urlList;
 
     public Long getId() {
         return id;
@@ -57,11 +57,11 @@ public class Products implements Serializable{
         this.price = price;
     }
 
-    public Calendar getUpdateAt() {
+    public LocalDate getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(Calendar updateAt) {
+    public void setUpdateAt(LocalDate updateAt) {
         this.updateAt = updateAt;
     }
 
@@ -81,11 +81,11 @@ public class Products implements Serializable{
         this.statusId = statusId;
     }
 
-    public int getImgId() {
-        return imgId;
+    public List<UrlImage> getUrlList() {
+        return urlList;
     }
 
-    public void setImgId(int imgId) {
-        this.imgId = imgId;
+    public void setUrlList(List<UrlImage> urlList) {
+        this.urlList = urlList;
     }
 }

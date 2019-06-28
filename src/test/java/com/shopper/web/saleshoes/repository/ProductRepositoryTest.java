@@ -2,6 +2,7 @@ package com.shopper.web.saleshoes.repository;
 
 
 import com.shopper.web.saleshoes.domain.Products;
+import com.shopper.web.saleshoes.service.ProductService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,12 @@ public class ProductRepositoryTest {
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private ProductService productService;
+
     @Test
     public void testFindAll(){
-        List<Products> list = repository.findAll();
+        List<Products> list = productService.getAllProducts();
         for (Products products:list) {
             System.out.println(products.getName());
         }
