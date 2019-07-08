@@ -34,3 +34,4 @@
 - Tìm kiếm sản phẩm.
 - Giỏ hàng.
 - Thanh toán.
+- Log out.
