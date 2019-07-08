@@ -56,10 +56,10 @@ public class HomeController {
 //        return "shop";
 //    }
 
-    @RequestMapping("/shop-single")
-    public String shopsingle() {
-        return "shop-single";
-    }
+//    @RequestMapping("/shop-single")
+//    public String shopsingle() {
+//        return "shop-single";
+//    }
 
     @RequestMapping("/sign-in")
     public String signin() {

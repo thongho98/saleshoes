@@ -1,17 +1,18 @@
 package com.shopper.web.saleshoes.controller;
 
 import com.shopper.web.saleshoes.domain.Products;
+import com.shopper.web.saleshoes.repository.ProductRepository;
 import com.shopper.web.saleshoes.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ProductsController {
@@ -19,11 +20,14 @@ public class ProductsController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value = "/men")
-    public String getList(ModelMap mm, Pageable pageable ) {
-        mm.addAttribute("men", productService.show(1));
-        return "men";
-    }
+    @Autowired
+    private ProductRepository repository;
+
+//    @RequestMapping(value = "/men")
+//    public String getList(ModelMap mm, Pageable pageable ) {
+//        mm.addAttribute("men", productService.show(1));
+//        return "men";
+//    }
 
     @RequestMapping(value = "/shop")
     public String getAllProducts(Model model, Pageable pageable) {
@@ -38,4 +42,12 @@ public class ProductsController {
         return "shop";
     }
 
+    @RequestMapping(value = "/shop-single")
+    public String getDetailProduct(@RequestParam("id") Long id, Model model){
+        Optional<Products> products = repository.findById(id);
+        if(products != null){
+            model.addAttribute("product",products.get());
+        }
+        return "shop-single";
+    }
 }

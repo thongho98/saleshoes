@@ -1,6 +1,6 @@
-create database dbsaleshoes character set utf8 collate utf8_bin;
+create database dbsaleshoes1 character set utf8 collate utf8_bin;
 
-use dbsaleshoes;
+use dbsaleshoes1;
 
 #table
 create table users(
@@ -42,8 +42,7 @@ create table role_permission(
 
 create table categories(
 	id int not null auto_increment primary key,
-	name varchar(255) not null,
-	image varchar(1000) null
+	name varchar(255) not null
 );
 
 create table status_product(
@@ -51,36 +50,30 @@ create table status_product(
 	name varchar(255) not null
 );
 
-create table url_image(
-	id int not null auto_increment primary key,
-	url varchar(1000) not null
-);
 
 create table size_shoes(
-	id_size int not null auto_increment primary key,
-    name varchar(3) not null
+	id int not null primary key,
+	quantity int not null
 );
 
 create table products(
 	id int not null auto_increment primary key,
 	name varchar(255) not null,
 	price double not null,
-	update_at date not null,
+	update_at date,
 	id_category int not null,
 	id_status int not null,
-	id_img int not null,
+	url_img varchar(255) not null,
 	foreign key (id_category) references categories(id),
-	foreign key (id_status) references status_product(id),
-	foreign key (id_img) references url_image(id)
+	foreign key (id_status) references status_product(id)
 );
 
 create table size_product(
 	id int not null auto_increment primary key,
 	id_size int not null,
 	id_product int not null,
-	quantity int not null,
 	unit varchar(50) not null,
-	foreign key (id_size) references size_shoes(id_size),
+	foreign key (id_size) references size_shoes(id),
 	foreign key (id_product) references products(id)
 );
 
@@ -88,14 +81,13 @@ create table description(
 	id int not null auto_increment primary key,
 	id_product int not null,
 	code varchar(50) not null,
-	description_detail varchar(1000) not null,
+	description_detail varchar(255),
 	material varchar(255) not null,
 	brands varchar(255) not null,
 	design varchar(255) not null,
 	madein varchar(255) not null,
 	foreign key (id_product) references products(id)
 );
-
 create table bill_status(
 	id int not null auto_increment primary key,
 	name varchar(50) not null
@@ -130,4 +122,3 @@ create table promotion(
 	dayend date not null,
 	url varchar(1000) not null
 );
-

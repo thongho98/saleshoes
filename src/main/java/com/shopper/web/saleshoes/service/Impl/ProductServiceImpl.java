@@ -1,9 +1,11 @@
 package com.shopper.web.saleshoes.service.Impl;
 
 import com.shopper.web.saleshoes.domain.Category;
+import com.shopper.web.saleshoes.domain.Description;
 import com.shopper.web.saleshoes.domain.Products;
 import com.shopper.web.saleshoes.dto.ProductsDTO;
 import com.shopper.web.saleshoes.repository.CategoryRepository;
+import com.shopper.web.saleshoes.repository.DescriptionRepository;
 import com.shopper.web.saleshoes.repository.ProductRepository;
 import com.shopper.web.saleshoes.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private DescriptionRepository reposDes;
+
     @Override
     public List<Products> show(int categoryId){
         List<Category> list = repos.findAll();
@@ -33,4 +38,6 @@ public class ProductServiceImpl implements ProductService {
         List<Products> products = repository.findAll();
         return products;
     }
+
+
 }
