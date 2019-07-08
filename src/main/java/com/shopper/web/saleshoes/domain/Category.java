@@ -24,9 +24,6 @@ public class Category implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "image")
-    private String image;
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = PERSIST, orphanRemoval = true)
     private List<Products> productsList = new ArrayList<>();
 
@@ -54,11 +51,4 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 }
