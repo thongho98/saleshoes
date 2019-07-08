@@ -3,8 +3,11 @@ package com.shopper.web.saleshoes.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import static javax.persistence.CascadeType.PERSIST;
 
 //@Data
 @Entity
@@ -30,8 +33,19 @@ public class Products implements Serializable{
     @Column(name = "id_status")
     private int statusId;
 
-    @OneToMany(mappedBy="urlImage", fetch=FetchType.LAZY)
-    private List<UrlImage> urlList;
+    @Column(name = "url_img")
+    private String urlImage;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "products", cascade = PERSIST, orphanRemoval = true)
+    private Description description;
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -39,6 +53,14 @@ public class Products implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
     public String getName() {
@@ -81,11 +103,5 @@ public class Products implements Serializable{
         this.statusId = statusId;
     }
 
-    public List<UrlImage> getUrlList() {
-        return urlList;
-    }
 
-    public void setUrlList(List<UrlImage> urlList) {
-        this.urlList = urlList;
-    }
 }

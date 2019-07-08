@@ -121,7 +121,7 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" th:each="product : ${shop}">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a th:href="@{shop-single}"><img src="https://hoang-phuc.com/media/catalog/product/cache/1/small_image/210x/9df78eab33525d08d6e5fb8d27136e95/b/b/bb53_black_f16_1.jpg" alt="Image placeholder" class="img-fluid"></a>
+                    <a th:href="@{shop-single(id=${product.id})}"><img th:src="${product.urlImage}" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a th:text = "${product.name}"></a></h3>

@@ -14,19 +14,15 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class CategoryRepositoryTest {
-    @Autowired
-    private CategoryRepository repos;
+public class DescriptionRepositoryTest {
 
-    @Autowired DescriptionRepository reposDes;
+    @Autowired
+    DescriptionRepository reposDes;
 
     @Test
     @Transactional
     public void test() {
-        List<Category> list = repos.findAll();
-        List<Products> products = list.get(0).getProductsList();
-        System.out.println(list.get(0).getProductsList());
+        String products = reposDes.getOne(1L).getDetailDescription();
+        System.out.println(products);
     }
-
-
 }
