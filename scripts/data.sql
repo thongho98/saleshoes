@@ -1,4 +1,4 @@
-use dbsaleshoes1;
+use dbsaleshoes;
 
 #insert
 insert into roles(roleName) values ("SYS_ADMIN");

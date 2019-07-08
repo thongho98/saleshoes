@@ -1,4 +1,4 @@
-create database dbsaleshoes1 character set utf8 collate utf8_bin;
+create database dbsaleshoes character set utf8 collate utf8_bin;
 
 use dbsaleshoes1;
 
