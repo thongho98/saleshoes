@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
-    <link rel="stylesheet" type="text/css" th:href="@{/fonts/icomoon/style.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts.icomoon/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.css}">
@@ -37,7 +37,10 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a th:href="@{sign-in}"><span class="icon icon-person"></span></a></li>
+                  <li>
+                    <a th:if="${session.usersession == null}" th:href="@{sign-in}"><span class="icon icon-person"></span></a>
+                    <a th:unless="${session.usersession == null}" th:href="@{account-info}"><span class="icon icon-person"></span></a>
+                  </li>
                   <li><a th:href="@{#}"><span class="icon icon-heart-o"></span></a></li>
                   <li>
                     <a th:href="@{cart}" class="site-cart">
@@ -45,11 +48,14 @@
                       <span class="count">2</span>
                     </a>
                   </li>
-                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                  <li class="d-inline-block d-md-none ml-md-0">
+                    <a href="#" class="site-menu-toggle js-menu-toggle">
+                      <span class="icon-menu"></span>
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -79,7 +85,7 @@
           <div class="col-md-12 mb-0"><a th:href="@{index}">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">About</strong></div>
         </div>
       </div>
-    </div>  
+    </div>
 
     <div class="site-section border-bottom" data-aos="fade">
       <div class="container">
@@ -87,23 +93,38 @@
           <div class="col-md-6">
             <div class="block-16">
               <figure>
-                <img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span class="ion-md-play"></span></a>
+                <img src="images/Sping.jpg" alt="Image placeholder" class="img-fluid rounded">
 
               </figure>
             </div>
           </div>
           <div class="col-md-1"></div>
-          <div class="col-md-5">
+          <div class="col-md-5" >
             
             
             <div class="site-section-heading pt-3 mb-4">
               <h2 class="text-black">How We Started</h2>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam cumque recusandae, laudantium minima repellendus.</p>
+            <div class="block-4-text p-2">
+              <h3>Joining the Java 8 class with the passion to learn, approach and find out about Java and Spring. And it is gonna be launched by Web Shoes Shop project. Our first attempt goal is to complete the object that given by our teacher and then develope it to another level.
+              </h3>
+            </div>
+
             
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section border-bottom" data-aos="fade">
+      <div class="container">
+        <div class="row justify-content-center mb-6">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2>PLAN</h2>
+          </div>
+
+          <P><img src="images/PLAN.png" alt="Image placeholder" class="mb-3"></P>
+
         </div>
       </div>
     </div>
@@ -116,59 +137,45 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-4">
   
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="images/person_1.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Elizabeth Graham</h3>
-                  <p class="block-38-subheading">CEO/Co-Founder</p>
+                  <img src="images/Thong.png" alt="Image placeholder" class="mb-3">
+                  <h3 class="block-38-heading h4">THONG HO</h3>
+                  <p class="block-38-subheading">Coder/Leader</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
+                  <p>WORK DONE:</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-4">
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="images/person_2.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Jennifer Greive</h3>
-                  <p class="block-38-subheading">Co-Founder</p>
+                  <img src="images/Nhan.png" alt="Image placeholder" class="mb-3">
+                  <h3 class="block-38-heading h4">NHAN NGUYEN</h3>
+                  <p class="block-38-subheading">Coder</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
+                  <p>WORK DONE:</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+          <div class="col-md-6 col-lg-4">
             <div class="block-38 text-center">
               <div class="block-38-img">
                 <div class="block-38-header">
-                  <img src="images/person_3.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Patrick Marx</h3>
-                  <p class="block-38-subheading">Marketing</p>
+                  <img src="images/Tam.jpg" alt="Image placeholder" class="mb-3">
+                  <h3 class="block-38-heading h4">TAM DOAN</h3>
+                  <p class="block-38-subheading">Coder</p>
                 </div>
                 <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_4.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Mike Coolbert</h3>
-                  <p class="block-38-subheading">Sales Manager</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
+                  <p>WORK DONE:</p>
                 </div>
               </div>
             </div>

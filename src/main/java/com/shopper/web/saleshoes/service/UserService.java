@@ -14,4 +14,6 @@ public interface UserService {
     void save(Users user);
 
     void sendEmail(String email);
+
+    void update(Users users);
 }

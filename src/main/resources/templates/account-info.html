@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Sign In</title>
+    <title>Accout Infomation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
 </head>
 <body>
-
 <div class="site-wrap">
     <header class="site-navbar" role="banner">
         <div class="site-navbar-top">
@@ -67,9 +66,9 @@
                     <li class="has-children">
                         <a th:href="@{shop}">PRODUCT</a>
                         <ul class="dropdown">
-                            <li><a th:href="@{shop/men}">For Men</a></li>
-                            <li><a th:href="@{shop/women}">For Children</a></li>
-                            <li><a th:href="@{shop/children}">For Women</a></li>
+                            <li><a href="#">For Men</a></li>
+                            <li><a href="#">For Children</a></li>
+                            <li><a href="#">For Women</a></li>
                         </ul>
                     </li>
                     <li><a th:href="@{about}">ABOUT US</a></li>
@@ -78,65 +77,83 @@
             </div>
         </nav>
     </header>
-
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Sign Up</strong></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="h3 mb-3 text-black">Sign Up</h2>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <h2 class="h3 mb-3 text-black"></h2>
                 </div>
-                <div class="col-md-7">
-
-                    <form th:action="@{sign-in}" method="post" th:object="${loginRequest}">
-                        <div class="p-3 p-lg-5 border">
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                <div class="col-md-8">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h2 class="h3 text-black">Thông tin tài khoản</h2>
+                    </div>
+                    <form th:action="@{/account-info}" method="POST" th:object="${changePassRequest}">
+                        <div class="p-3 p-lg-6 border">
                             <div class="form-group row">
-                                <div class="col-md-12">
-                                    <label for="username" class="text-black">Username <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="username" th:field="*{username}"
-                                           placeholder="Username/Email/Phone">
+                                <div class="col-md-4">
+                                    <label class="text-black">Họ tên</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" th:value="${session.usersession.displayName}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-md-12">
-                                    <label for="password" class="text-black">Password <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" id="password" th:field="*{password}"
-                                           placeholder="Password">
+                                <div class="col-md-4">
+                                    <label class="text-black">Email</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="email" class="form-control" th:value="${session.usersession.email}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label class="text-black">Số điện thoại</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" th:value="${session.usersession.phone}" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 justify-content-center">
+                                    <label class="h4 mb-3 text-black">Thay đổi mật khẩu</label>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label class="text-black">Mật khẩu cũ</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control" th:field="*{password}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label class="text-black">Mật khẩu mới</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control" th:field="*{newPassword}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <label class="text-black">Nhập lại mật khẩu mới</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="password" class="form-control" th:field="*{confirmNewPassword}">
                                 </div>
                             </div>
                             <br>
-
-
                             <div class="form-group row">
-                                <div class="col-lg-12">
-                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="SIGN IN">
+                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4">
+                                    <button type="submit" class="btn btn-warning btn-lg btn-block">Cập nhật</button>
                                 </div>
                             </div>
                         </div>
                     </form>
-                    <div th:if="${messsage} != null" class="alert alert-primary" role="alert">
-                        Username or Password fail. Please check again!
-                    </div>
-
-                </div>
-                <div class="col-md-5 ml-auto">
-                    <label for="password" class="text-black">CREATE NEW ACCOUNT? <span
-                            class="text-danger">*</span></label>
-                    <hr>
-                    <br>
-                    <div class="form-group row">
-                        <div class="col-lg-12">
-                            <a th:href="@{sign-up}" class="btn btn-primary btn-lg btn-block" value="">CREATE ACCOUNT</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -219,7 +236,6 @@
         </div>
     </footer>
 </div>
-
 <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
 <script th:src="@{/js/jquery-ui.js}"></script>
 <script th:src="@{/js/popper.min.js}"></script>
@@ -228,6 +244,5 @@
 <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
 <script th:src="@{/js/aos.js}"></script>
 <script th:src="@{/js/main.js}"></script>
-
 </body>
 </html>
