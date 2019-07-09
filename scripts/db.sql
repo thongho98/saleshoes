@@ -82,7 +82,7 @@ create table description(
 	id int not null auto_increment primary key,
 	id_product int not null,
 	code varchar(50) not null,
-	description_detail varchar(255),
+	description_detail varchar(1000),
 	material varchar(255) not null,
 	brands varchar(255) not null,
 	design varchar(255) not null,

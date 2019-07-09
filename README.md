@@ -35,3 +35,5 @@
 - Giỏ hàng.
 - Thanh toán.
 - Log out.
+- Chi tiết sản phẩm.
+- Chưa bắt Validator
