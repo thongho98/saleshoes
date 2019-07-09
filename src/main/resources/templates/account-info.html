@@ -66,9 +66,9 @@
                     <li class="has-children">
                         <a th:href="@{shop}">PRODUCT</a>
                         <ul class="dropdown">
-                            <li><a href="#">For Men</a></li>
-                            <li><a href="#">For Children</a></li>
-                            <li><a href="#">For Women</a></li>
+                            <li><a th:href="@{/men}">For Men</a></li>
+                            <li><a th:href="@{/women}">For Children</a></li>
+                            <li><a th:href="@{/children}">For Women</a></li>
                         </ul>
                     </li>
                     <li><a th:href="@{about}">ABOUT US</a></li>
@@ -77,6 +77,7 @@
             </div>
         </nav>
     </header>
+
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">

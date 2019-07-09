@@ -56,10 +56,10 @@ public class HomeController {
 //        return "shop";
 //    }
 
-//    @RequestMapping("/shop-single")
-//    public String shopsingle() {
-//        return "shop-single";
-//    }
+    @RequestMapping("/thankyou-account")
+    public String thankyouaccount() {
+        return "thankyou-account";
+    }
 
     @RequestMapping("/sign-in")
     public String signin() {
@@ -113,7 +113,7 @@ public class HomeController {
             BeanUtils.copyProperties(registerUser,user);
             userService.save(user);
             userService.sendEmail(registerUser.getEmail());
-            return "redirect:/sign-in";
+            return "redirect:/thankyou-account";
         }
         return "sign-up";
     }
