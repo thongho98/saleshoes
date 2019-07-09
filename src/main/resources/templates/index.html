@@ -37,40 +37,34 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li>
-                    <a th:if="${session.usersession == null}" th:href="@{sign-in}"><span class="icon icon-person"></span></a>
-                    <a th:unless="${session.usersession == null}" th:href="@{account-info}"><span class="icon icon-person"></span></a>
-                  </li>
+                  <li><a th:href="@{sign-in}"><span class="icon icon-person"></span></a></li>
                   <li><a th:href="@{#}"><span class="icon icon-heart-o"></span></a></li>
                   <li>
                     <a th:href="@{cart}" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
                     </a>
-                  </li>
-                  <li class="d-inline-block d-md-none ml-md-0">
-                    <a href="#" class="site-menu-toggle js-menu-toggle">
-                      <span class="icon-menu"></span>
-                    </a>
-                  </li>
+                  </li> 
+                  <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                 </ul>
-              </div>
+              </div> 
             </div>
+
           </div>
         </div>
-      </div>
+      </div> 
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
             <li><a th:href="@{index}">HOME</a></li>
             <li><a th:href="@{shop}">SHOP</a></li>
             <li class="has-children">
-              <a th:href="@{shop}">PRODUCT</a>
-              <ul class="dropdown">
-                <li><a href="#">For Men</a></li>
-                <li><a href="#">For Children</a></li>
-                <li><a href="#">For Women</a></li>
-              </ul>
+                <a th:href="@{shop}">PRODUCT</a>
+                <ul class="dropdown">
+                  <li><a href="#">For Men</a></li>
+                  <li><a href="#">For Children</a></li>
+                  <li><a href="#">For Women</a></li>
+                </ul>
             </li>
             <li><a th:href="@{about}">ABOUT US</a></li>
             <li><a th:href="@{contact}">CONTACT</a></li>

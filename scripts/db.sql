@@ -42,7 +42,8 @@ create table role_permission(
 
 create table categories(
 	id int not null auto_increment primary key,
-	name varchar(255) not null
+	name varchar(255) not null,
+	image varchar(1000) null
 );
 
 create table status_product(

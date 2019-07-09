@@ -24,10 +24,46 @@ public class ProductsController {
     @Autowired
     private ProductRepository repository;
 
-    @RequestMapping(value = "/men")
-    public String getList(ModelMap mm, Pageable pageable ) {
-        mm.addAttribute("men", productService.show(1));
-        return "men";
+    @RequestMapping(value = "/shop/men")
+    public String getListMen(Model model, Pageable pageable ) {
+        List<Products> list = productService.showListProduct(0); // do catefory là 1 list nên bắt đầu từ 0
+        PagedListHolder<Products> page = new PagedListHolder<>(list);
+        page.setPage(pageable.getPageNumber());
+        page.setPageSize(pageable.getPageSize());
+        model.addAttribute("shop", page.getPageList());
+        model.addAttribute("key", "/shop/men");
+        model.addAttribute("page", page.getPage());
+        model.addAttribute("hasPre", !page.isFirstPage());
+        model.addAttribute("hasNext", !page.isLastPage());
+        return "shop";
+    }
+
+    @RequestMapping(value = "/shop/women")
+    public String getListWomen(Model model, Pageable pageable ) {
+        List<Products> list = productService.showListProduct(1);
+        PagedListHolder<Products> page = new PagedListHolder<>(list);
+        page.setPage(pageable.getPageNumber());
+        page.setPageSize(pageable.getPageSize());
+        model.addAttribute("shop", page.getPageList());
+        model.addAttribute("key", "/shop/women");
+        model.addAttribute("page", page.getPage());
+        model.addAttribute("hasPre", !page.isFirstPage());
+        model.addAttribute("hasNext", !page.isLastPage());
+        return "shop";
+    }
+
+    @RequestMapping(value = "/shop/children")
+    public String getListChildren(Model model, Pageable pageable ) {
+        List<Products> list = productService.showListProduct(2);
+        PagedListHolder<Products> page = new PagedListHolder<>(list);
+        page.setPage(pageable.getPageNumber());
+        page.setPageSize(pageable.getPageSize());
+        model.addAttribute("shop", page.getPageList());
+        model.addAttribute("key", "/shop/children");
+        model.addAttribute("page", page.getPage());
+        model.addAttribute("hasPre", !page.isFirstPage());
+        model.addAttribute("hasNext", !page.isLastPage());
+        return "shop";
     }
 
     @RequestMapping(value = "/shop")
@@ -37,6 +73,7 @@ public class ProductsController {
         page.setPage(pageable.getPageNumber());
         page.setPageSize(pageable.getPageSize());
         model.addAttribute("shop", page.getPageList());
+        model.addAttribute("key", "/shop");
         model.addAttribute("page", page.getPage());
         model.addAttribute("hasPre", !page.isFirstPage());
         model.addAttribute("hasNext", !page.isLastPage());

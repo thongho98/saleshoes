@@ -67,9 +67,9 @@
             <li class="has-children">
               <a th:href="@{shop}">PRODUCT</a>
               <ul class="dropdown">
-                <li><a href="#">For Men</a></li>
-                <li><a href="#">For Children</a></li>
-                <li><a href="#">For Women</a></li>
+                <li><a th:href="@{shop/men}">For Men</a></li>
+                <li><a th:href="@{shop/women}">For Children</a></li>
+                <li><a th:href="@{shop/children}">For Women</a></li>
               </ul>
             </li>
             <li><a th:href="@{about}">ABOUT US</a></li>
@@ -102,9 +102,9 @@
                       Latest
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">Men</a>
-                      <a class="dropdown-item" href="#">Women</a>
-                      <a class="dropdown-item" href="#">Children</a>
+                      <a class="dropdown-item" th:href="@{shop/men}">Men</a>
+                      <a class="dropdown-item" th:href="@{shop/women}">Women</a>
+                      <a class="dropdown-item" th:href="@{shop/children}">Children</a>
                     </div>
                   </div>
                   <div class="btn-group">
@@ -138,22 +138,22 @@
             </div>
 
             </div>
-            <div class="row" data-aos="fade-up">
-              <div class="col-md-12 text-center">
-                <div class="site-block-27">
-                  <ul>
-                    <li><a th:if="${hasPre}" th:href="@{/shop(page=${page-1}, size=9)}">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a th:if="${hasNext}" th:href="@{/shop(page=${page+1}, size=9)}">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
+        <div class="row" data-aos="fade-up">
+          <div class="col-md-12 text-center">
+            <div class="site-block-27">
+              <ul>
+                <li><a th:if="${hasPre}" th:href="@{${key}(page=${page-1}, size=9)}">&lt;</a></li>
+                <!--                    <li class="active"><span>1</span></li>-->
+                <!--                    <li><a href="#">2</a></li>-->
+                <!--                    <li><a href="#">3</a></li>-->
+                <!--                    <li><a href="#">4</a></li>-->
+                <!--                    <li><a href="#">5</a></li>-->
+                <li><a th:if="${hasNext}" th:href="@{${key}(page=${page+1}, size=9)}">&gt;</a></li>
+              </ul>
             </div>
           </div>
+        </div>
+      </div>
 
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">

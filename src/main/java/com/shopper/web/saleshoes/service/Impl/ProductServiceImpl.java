@@ -23,7 +23,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository repository;
 
     @Override
-    public List<Products> show(int categoryId){
+    public List<Products> showListProduct(int categoryId){
         List<Category> list = repos.findAll();
         List<Products> products = list.get(categoryId).getProductsList();
         return products;
