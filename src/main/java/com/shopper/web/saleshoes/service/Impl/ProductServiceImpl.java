@@ -1,7 +1,6 @@
 package com.shopper.web.saleshoes.service.Impl;
 
 import com.shopper.web.saleshoes.domain.Category;
-import com.shopper.web.saleshoes.domain.Description;
 import com.shopper.web.saleshoes.domain.Products;
 import com.shopper.web.saleshoes.dto.ProductsDTO;
 import com.shopper.web.saleshoes.repository.CategoryRepository;
@@ -28,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
     private DescriptionRepository reposDes;
 
     @Override
-    public List<Products> show(int categoryId){
+    public List<Products> showListProduct(int categoryId){
         List<Category> list = repos.findAll();
         List<Products> products = list.get(categoryId).getProductsList();
         return products;

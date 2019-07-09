@@ -1,6 +1,6 @@
-create database dbsaleshoes1 character set utf8 collate utf8_bin;
+create database dbsaleshoes character set utf8 collate utf8_bin;
 
-use dbsaleshoes1;
+use dbsaleshoes;
 
 #table
 create table users(
@@ -42,7 +42,8 @@ create table role_permission(
 
 create table categories(
 	id int not null auto_increment primary key,
-	name varchar(255) not null
+	name varchar(255) not null,
+	image varchar(1000) null
 );
 
 create table status_product(

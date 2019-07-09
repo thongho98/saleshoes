@@ -1,7 +1,6 @@
 package com.shopper.web.saleshoes.repository;
 
 import com.shopper.web.saleshoes.domain.Category;
-import com.shopper.web.saleshoes.domain.Description;
 import com.shopper.web.saleshoes.domain.Products;
 import org.junit.Test;
 import org.junit.runner.RunWith;
