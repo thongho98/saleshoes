@@ -91,6 +91,11 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <h2 class="h3 text-black">Thông tin tài khoản</h2>
                     </div>
+                    <div th:if="${messsage} != null" class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="alert alert-primary" role="alert">
+                            Cập nhật thành công!
+                        </div>
+                    </div>
                     <form th:action="@{/account-info}" method="POST" th:object="${changePassRequest}">
                         <div class="p-3 p-lg-6 border">
                             <div class="form-group row">
